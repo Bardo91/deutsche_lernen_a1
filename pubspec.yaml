@@ -57,7 +57,6 @@ flutter:
     - assets/nihongo_goi_vocabulary.db
     - assets/nihongo_goi_lessons.db
     - assets/background.jpg
-    - assets/ost.mp3
     - assets/launcher/nihongo2.png
     - assets/gifs/cat_1.gif
     - assets/gifs/cat_2.gif
