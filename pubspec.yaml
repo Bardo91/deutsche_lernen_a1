@@ -1,5 +1,5 @@
 name: deutsche_lernen_a1
-description: Applicación para repasar el vocabulario para el nivel N5 de japones.
+description: Applicación para repasar vocabulario de aleman A1-A2.
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
@@ -39,13 +39,14 @@ dev_dependencies:
 flutter_icons:
   ios: true
   android: true
-  image_path_android: "assets/launcher/nihongo2.png"
-  image_path_ios: "assets/launcher/nihongo2.png"
+  image_path_android: "assets/launcher/icon.png"
+  image_path_ios: "assets/launcher/icon.png"
 
 # The following section is specific to Flutter.
 flutter:
   uses-material-design: true
   assets:
     - assets/deutsch_lernen_a1.db
-    - assets/background.jpg
-    - assets/launcher/nihongo2.png
+    - assets/bg_day.jpg
+    - assets/bg_night.jpg
+    - assets/launcher/icon.jpg

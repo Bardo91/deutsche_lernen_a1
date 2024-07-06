@@ -1,4 +1,4 @@
-package com.example.nihongo_goi_n5
+package com.example.deutsche_lernen_a1
 
 import io.flutter.embedding.android.FlutterActivity
 

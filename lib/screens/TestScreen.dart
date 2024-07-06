@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:deutsche_lernen_a1/helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:deutsche_lernen_a1/widgets/exercises/Exercise4Options.dart';
@@ -84,7 +85,7 @@ class _TestScreenState extends State<TestScreen> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/background.jpg"),
+            image: AssetImage(getBgImage()),
             fit: BoxFit.cover,
           ),
         ),

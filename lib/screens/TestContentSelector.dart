@@ -1,3 +1,4 @@
+import 'package:deutsche_lernen_a1/helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:chips_choice/chips_choice.dart';
 import 'package:deutsche_lernen_a1/persistency/DeutscheLernenDatabase.dart';
@@ -30,7 +31,7 @@ class _TestContentSelectorState extends State<TestContentSelector> {
       body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/background.jpg"),
+              image: AssetImage(getBgImage()),
               fit: BoxFit.cover,
             ),
           ),

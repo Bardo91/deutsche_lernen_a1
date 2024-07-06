@@ -16,7 +16,7 @@ class LessonEntry {
 
 class DeutscheLernenDatabaseLessons {
   final int DATABASE_VERSION = 1;
-  final String DATABASE_NAME = "nihongo_goi_lessons.db";
+  final String DATABASE_NAME = "deutsche_lernen_a1_lessons.db";
 
   late Database database;
   bool _isOpen = false;
@@ -44,7 +44,7 @@ class DeutscheLernenDatabaseLessons {
     Directory applicationDirectory = await getApplicationDocumentsDirectory();
 
     String dbPathEnglish =
-        join(applicationDirectory.path, "nihongo_goi_lessons.db");
+        join(applicationDirectory.path, "deutsche_lernen_a1_lessons.db");
     String url =
         "https://github.com/Bardo91/nihongo_goi_n5/raw/master/assets/nihongo_goi_lessons.db";
 

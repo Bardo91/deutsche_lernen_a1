@@ -1,3 +1,4 @@
+import 'package:deutsche_lernen_a1/helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -27,7 +28,7 @@ class _LessonSelectorState extends State<LessonSelector> {
         body: Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/background.jpg"),
+                image: AssetImage(getBgImage()),
                 fit: BoxFit.cover,
               ),
             ),

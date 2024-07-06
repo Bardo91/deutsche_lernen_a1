@@ -1,6 +1,6 @@
-# nihongogoin5
+# deutsche_lernen_a1
 
-Vocabulary helper app for CEAO Nihongo level 2
+Vocabulary helper app for german a1
 
 ## Getting Started
 
