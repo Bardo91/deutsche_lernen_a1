@@ -1,7 +1,6 @@
 import 'package:deutsche_lernen_a1/helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gif/flutter_gif.dart';
-import 'package:deutsche_lernen_a1/screens/LessonSelector.dart';
 import 'package:deutsche_lernen_a1/screens/TestContentSelector.dart';
 import 'package:deutsche_lernen_a1/persistency/DeutscheLernenDatabase.dart';
 import 'package:deutsche_lernen_a1/persistency/DeutscheLernenDatabaseLessons.dart';
