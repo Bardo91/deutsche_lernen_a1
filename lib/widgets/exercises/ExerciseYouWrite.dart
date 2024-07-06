@@ -69,7 +69,8 @@ class _ExerciseYouWriteState extends State<ExerciseYouWrite> {
           TextField(
             decoration: InputDecoration(
                 border: OutlineInputBorder(), hintText: 'Type your answer'),
-            onChanged: (value) => widget._isRight = _answer == value,
+            onChanged: (value) => widget._isRight =
+                _answer.toLowerCase().trim() == value.toLowerCase().trim(),
           )
         ],
       ),
