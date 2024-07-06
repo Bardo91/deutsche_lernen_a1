@@ -1,4 +1,4 @@
-name: nihongogoin5
+name: deutsche_lernen_a1
 description: Applicación para repasar el vocabulario para el nivel N5 de japones.
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -21,7 +21,6 @@ dependencies:
   flutter_local_notifications:
   confetti:
   chips_choice:
-  sn_progress_dialog  : any
   flutter_gif: any
   painter:
   devtools_server:
@@ -37,7 +36,6 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-
 flutter_icons:
   ios: true
   android: true
@@ -46,25 +44,8 @@ flutter_icons:
 
 # The following section is specific to Flutter.
 flutter:
-
   uses-material-design: true
-  fonts:
-    - family: KanjiStrokeOrders_v4
-      fonts:
-        - asset: assets/fonts/KanjiStrokeOrders_v4.ttf
-
   assets:
-    - assets/nihongo_goi_vocabulary.db
-    - assets/nihongo_goi_lessons.db
+    - assets/deutsch_lernen_a1.db
     - assets/background.jpg
     - assets/launcher/nihongo2.png
-    - assets/gifs/cat_1.gif
-    - assets/gifs/cat_2.gif
-    - assets/gifs/cat_3.gif
-    - assets/gifs/cat_4.gif
-    - assets/gifs/cat_5.gif
-    - assets/gifs/cat_6.gif
-    - assets/gifs/cat_7.gif
-    - assets/gifs/cat_8.gif
-    - assets/gifs/cat_9.gif
-    - assets/gifs/cat_10.gif

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nihongogoin5/persistency/DeutscheLernenDatabase.dart';
+import 'package:deutsche_lernen_a1/persistency/DeutscheLernenDatabase.dart';
 
 class VocabularyScreen extends StatefulWidget {
   List<VocabularyEntry> vocabulary_ = [];
@@ -60,7 +60,7 @@ class _VocabularyScreenState extends State<VocabularyScreen> {
                                 .toLowerCase()
                                 .contains(
                                     _searchController.text.toLowerCase()) ||
-                            widget.vocabulary_[index].japanese
+                            widget.vocabulary_[index].deutsche
                                 .toLowerCase()
                                 .contains(
                                     _searchController.text.toLowerCase())) {
@@ -82,7 +82,7 @@ class _VocabularyScreenState extends State<VocabularyScreen> {
         title: Row(
       children: [
         Expanded(child: Text(entry.spanish)),
-        Expanded(child: Text(entry.japanese))
+        Expanded(child: Text(entry.deutsche))
       ],
     ));
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
-import 'package:nihongogoin5/persistency/DeutscheLernenDatabaseLessons.dart';
+import 'package:deutsche_lernen_a1/persistency/DeutscheLernenDatabaseLessons.dart';
 
 class EntrySelector extends StatefulWidget {
   List<LessonEntry> _entries = [];

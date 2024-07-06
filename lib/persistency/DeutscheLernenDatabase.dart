@@ -4,17 +4,19 @@ import 'package:flutter/foundation.dart';
 import 'package:path/path.dart';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
+import 'package:flutter/services.dart' show rootBundle;
 
 class VocabularyEntry {
-  final japanese;
+  final article;
+  final deutsche;
   final spanish;
 
-  VocabularyEntry({this.japanese, this.spanish});
+  VocabularyEntry({this.article, this.deutsche, this.spanish});
 }
 
 class DeutscheLernenDatabase {
   final int DATABASE_VERSION = 1;
-  final String DATABASE_NAME = "nihongo_goi_vocabulary.db";
+  final String DATABASE_NAME = "deutsch_lernen_a1.db";
 
   late Database database;
   late bool isOpen_ = false;
@@ -27,38 +29,14 @@ class DeutscheLernenDatabase {
 
   Future<bool> open() async {
     WidgetsFlutterBinding.ensureInitialized();
+    ByteData data = await rootBundle.load('assets/deutsch_lernen_a1.db');
+    final Directory tempDir = await getTemporaryDirectory();
+    final path = join(tempDir.path, DATABASE_NAME);
+    List<int> bytes =
+        data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+    await File(path).writeAsBytes(bytes, flush: true);
 
-    //final dbPath  = await getDatabasesPath();
-    //final path = join(dbPath, DATABASE_NAME);
-    //
-    //ByteData data = await rootBundle.load(join("assets", DATABASE_NAME));
-    //
-    //List<int> bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
-    //await File(path).writeAsBytes(bytes, flush: true);
-    //
-    //database = await openDatabase(path);
-
-    Directory applicationDirectory = await getApplicationDocumentsDirectory();
-
-    String dbPathEnglish =
-        join(applicationDirectory.path, "nihongo_goi_vocabulary.db");
-    String url =
-        "https://github.com/Bardo91/nihongo_goi_n5/raw/master/assets/nihongo_goi_vocabulary.db";
-
-    var httpClient = new HttpClient();
-    var request = await httpClient.getUrl(Uri.parse(url));
-    var response = await request.close();
-
-    // thow an error if there was error getting the file
-    // so it prevents from wrting the wrong content into the db file
-    if (response.statusCode != 200) throw "Error getting db file";
-
-    var bytes = await consolidateHttpClientResponseBytes(response);
-
-    File file = new File(dbPathEnglish);
-    await file.writeAsBytes(bytes);
-
-    database = await openDatabase(dbPathEnglish);
+    database = await openDatabase(path);
 
     if (!database.isOpen) {
       return false;
@@ -78,7 +56,8 @@ class DeutscheLernenDatabase {
       // Convert the List<Map<String, dynamic> into a List<Dog>.
       var table = List.generate(maps.length, (i) {
         return VocabularyEntry(
-          japanese: maps[i]['japanese'],
+          article: maps[i]['article'],
+          deutsche: maps[i]['deutsche'],
           spanish: maps[i]['spanish'],
         );
       });

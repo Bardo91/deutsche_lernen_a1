@@ -1,13 +1,10 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_gif/flutter_gif.dart';
-import 'package:nihongogoin5/screens/LessonSelector.dart';
-import 'package:nihongogoin5/screens/TestContentSelector.dart';
-import 'package:nihongogoin5/persistency/DeutscheLernenDatabase.dart';
-import 'package:nihongogoin5/persistency/DeutscheLernenDatabaseLessons.dart';
-import 'package:nihongogoin5/screens/VocabularyTopicSelector.dart';
-import 'package:sn_progress_dialog/sn_progress_dialog.dart';
+import 'package:deutsche_lernen_a1/screens/LessonSelector.dart';
+import 'package:deutsche_lernen_a1/screens/TestContentSelector.dart';
+import 'package:deutsche_lernen_a1/persistency/DeutscheLernenDatabase.dart';
+import 'package:deutsche_lernen_a1/persistency/DeutscheLernenDatabaseLessons.dart';
+import 'package:deutsche_lernen_a1/screens/VocabularyTopicSelector.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,10 +33,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   DeutscheLernenDatabase _dbVocabulary = DeutscheLernenDatabase();
   DeutscheLernenDatabaseLessons _dbLessons = DeutscheLernenDatabaseLessons();
-  late ProgressDialog dbProcessDialog;
-  late Future<bool> isDbOpen;
-  late Future<bool> isDbLessonsOpen;
-  bool playMusic = false;
+  bool isDbOpen = false;
+  bool isDbLessonsOpen = false;
 
   late FlutterGifController controller;
 
@@ -48,22 +43,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     super.initState();
     controller = FlutterGifController(vsync: this);
 
-    isDbOpen = _dbVocabulary.open();
-    isDbLessonsOpen = _dbLessons.open();
-    dbProcessDialog = ProgressDialog(context: context);
-    dbProcessDialog.show(
-      barrierDismissible: true,
-      msg: "Loading DB...",
-      hideValue: true,
-    );
-
-    Future.delayed(Duration(seconds: 4)).then((onValue) {
-      isDbOpen.then((value) {
-        if (value) {
-          dbProcessDialog.close();
-        }
-      });
-    });
+    _dbVocabulary.open().then((value) => isDbOpen = value);
+    // _dbLessons.open().then((value) => isDbLessonsOpen = value);
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       controller.repeat(min: 0, max: 2, period: Duration(milliseconds: 500));
@@ -72,12 +53,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(Duration.zero, () {
-      if (!_dbVocabulary.isOpen() & !_dbLessons.isOpen) dbProcessDialog.show();
-    });
-
-    var random = new Random();
-
     return Scaffold(
         appBar: AppBar(
           title: Text(
@@ -96,40 +71,36 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               children: [
                 ListTile(
                     title: Text("Test"),
-                    onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                TestContentSelector(_dbVocabulary)))),
+                    onTap: () => isDbOpen
+                        ? Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    TestContentSelector(_dbVocabulary)))
+                        : {}),
                 Divider(
                   thickness: 2,
                 ),
                 ListTile(
                     title: Text("Vocabulario"),
-                    onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                VocabularyTopicSelector(_dbVocabulary)))),
+                    onTap: () => isDbOpen
+                        ? Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    VocabularyTopicSelector(_dbVocabulary)))
+                        : {}),
                 Divider(
                   thickness: 2,
                 ),
                 ListTile(
-                    title: Text("Lessons"),
-                    onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                LessonSelector(_dbLessons.getEntries)))),
-                Divider(
-                  thickness: 2,
+                  title: Text("Lessons"),
+                  // onTap: () => Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //         builder: (context) =>
+                  //             LessonSelector(_dbLessons.getEntries)))
                 ),
-                GifImage(
-                  controller: controller,
-                  image: AssetImage("assets/gifs/cat_" +
-                      (random.nextInt(9) + 1).toString() +
-                      ".gif"),
-                )
               ],
             )));
   }

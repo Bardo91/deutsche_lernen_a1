@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:chips_choice/chips_choice.dart';
-import 'package:nihongogoin5/persistency/DeutscheLernenDatabase.dart';
+import 'package:deutsche_lernen_a1/persistency/DeutscheLernenDatabase.dart';
 import 'package:path/path.dart';
 
 import 'TestScreen.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nihongogoin5/persistency/DeutscheLernenDatabase.dart';
-import 'package:nihongogoin5/screens/VocabularyScreen.dart';
+import 'package:deutsche_lernen_a1/persistency/DeutscheLernenDatabase.dart';
+import 'package:deutsche_lernen_a1/screens/VocabularyScreen.dart';
 
 class VocabularyTopicSelector extends StatefulWidget {
   List<String> topics_ = [];

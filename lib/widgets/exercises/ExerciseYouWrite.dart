@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:nihongogoin5/persistency/DeutscheLernenDatabase.dart';
+import 'package:deutsche_lernen_a1/persistency/DeutscheLernenDatabase.dart';
 
 class ExerciseYouWrite extends StatefulWidget {
   List<VocabularyEntry> _vocabulary = [];
@@ -81,7 +81,7 @@ class _ExerciseYouWriteState extends State<ExerciseYouWrite> {
       case 0:
         return word.spanish;
       case 1:
-        return word.japanese;
+        return word.deutsche;
       default:
         return "error";
     }

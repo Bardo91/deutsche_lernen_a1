@@ -2,11 +2,11 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:nihongogoin5/widgets/exercises/Exercise4Options.dart';
-import 'package:nihongogoin5/widgets/exercises/ExerciseYouWrite.dart';
+import 'package:deutsche_lernen_a1/widgets/exercises/Exercise4Options.dart';
+import 'package:deutsche_lernen_a1/widgets/exercises/ExerciseYouWrite.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
-import 'package:nihongogoin5/persistency/DeutscheLernenDatabase.dart';
+import 'package:deutsche_lernen_a1/persistency/DeutscheLernenDatabase.dart';
 import 'package:confetti/confetti.dart';
 
 class TestScreen extends StatefulWidget {
@@ -67,7 +67,7 @@ class _TestScreenState extends State<TestScreen> {
               widget.vocabulary_[_currentWordId].spanish,
             ),
             Icon(Icons.arrow_forward),
-            Text(widget.vocabulary_[_currentWordId].japanese),
+            Text(widget.vocabulary_[_currentWordId].deutsche),
           ],
         )
       ]);
